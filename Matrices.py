@@ -1,4 +1,4 @@
-class Matrices:
+class Matrix:
     """create a matrix of size row/columns
         create and return all the random values for the matrix
         populate that matrix with random values
@@ -15,3 +15,6 @@ class Matrices:
 
     def get_matrix(self):
         pass
+
+
+m1 = Matrix()
