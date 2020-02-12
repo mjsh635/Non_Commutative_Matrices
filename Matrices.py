@@ -1,3 +1,7 @@
+
+import random
+import numpy as np
+
 class Matrix:
     """create a matrix of size row/columns
         create and return all the random values for the matrix
