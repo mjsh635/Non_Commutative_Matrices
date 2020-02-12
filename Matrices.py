@@ -91,8 +91,8 @@ class Matrix:
             return "The number of columns in the first matrix should match the rows in the second"
 
 
-m1 = Matrix(2,3)
-m2 = Matrix(3,2,2)
+m1 = Matrix(2,1)
+m2 = Matrix(1,4,2)
 print(m1.get_matrix())
 print(m2.get_matrix())
 print(m1*m2)
