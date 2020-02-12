@@ -70,13 +70,13 @@ class Matrix:
             need if cases for breaking and setting indexers to 0
         """
         if (self.columns == other.rows):
-            new_matrix = self._create_empty_matrix(self.rows,self.columns)
+            new_matrix = self._create_empty_matrix(self.rows,other.columns)
             m = 0 #mat row
             n = 0 #mat col
             p = 0 #mat2 row
             q = 0 #mat2 col
             for row in range(self.rows):
-                for col in range(self.columns):
+                for col in range(other.columns):
                     for _ in range(self.columns):
                         new_matrix[row,col] += round(self.matrix[m,n] * other.matrix[p,q],2,)
                         n += 1
