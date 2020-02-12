@@ -8,8 +8,6 @@ class Matrix:
         populate that matrix with random values
         return the matrix
     """
-    def _create_matrix(self, rows:int, columns:int):
-        pass
     def __init__(self, rows, columns, seed = 1):
         self.columns = columns
         self.seed = seed
@@ -43,6 +41,54 @@ class Matrix:
         """ Return the matrix filled out
         """
         return self._populate_matrix(self.matrix,self._random_matrix_values())
+
+    def __add__(self, other):
+        if ((self.rows == other.rows) and (self.columns == other.columns)):
+            new_matrix = self._create_empty_matrix(self.rows,self.columns)
+            for row in range(self.rows):
+                for col in range(self.columns):
+                    new_matrix[row,col] = (self.matrix[row,col] + other.matrix[row,col])
+            return new_matrix
+        else:
+            return "Matrices sizes don't match"
+
+        
+    def __sub__(self,other):
+        if ((self.rows == other.rows) and (self.columns == other.columns)):
+            new_matrix = self._create_empty_matrix(self.rows,self.columns)
+            for row in range(self.rows):
+                for col in range(self.columns):
+                    new_matrix[row,col] = (self.matrix[row,col] - other.matrix[row,col])
+            return new_matrix
+        else:
+            return "Matrices sizes don't match"
+
+    def __mul__(self,other):
+        """ 23.86  26.77
+            6.97   21.63 AB
+
+            need if cases for breaking and setting indexers to 0
+        """
+        if (self.columns == other.rows):
+            new_matrix = self._create_empty_matrix(self.rows,self.columns)
+            m = 0 #mat row
+            n = 0 #mat col
+            p = 0 #mat2 row
+            q = 0 #mat2 col
+            for row in range(self.rows):
+                for col in range(self.columns):
+                    for _ in range(self.columns):
+                        new_matrix[row,col] += round(self.matrix[m,n] * other.matrix[p,q],2,)
+                        n += 1
+                        p += 1
+                    q += 1
+                    n = 0
+                    p = 0
+                m+=1
+                q = 0
+            return new_matrix
+        else:
+            return "The number of columns in the first matrix should match the rows in the second"
 
 
 m1 = Matrix()
