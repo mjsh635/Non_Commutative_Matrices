@@ -10,15 +10,39 @@ class Matrix:
     """
     def _create_matrix(self, rows:int, columns:int):
         pass
+    def __init__(self, rows, columns, seed = 1):
+        self.columns = columns
+        self.seed = seed
+        self.rows = rows
+        self.matrix = self._create_empty_matrix(self.rows,self.columns)
+        
+    
+    def _create_empty_matrix(self, rows, columns):
+        return np.zeros((rows,columns), dtype=float)
 
-    def _random_matrix_values(self, num_of_rows:int, num_of_columns:int):
-        pass
+    def _random_matrix_values(self):
+        """ return a string of random data to be entered into the maxtrix
+        """
+        random.seed(self.seed)
+        data = []
+        for _ in range(self.rows*self.columns):
+            data.append(round(random.random(), 2)+random.randint(0,5))
+        return data
 
-    def _populate_matrix(self, tbd):
-        pass
+    def _populate_matrix(self, matrix, data):
+        """vPopulate the matrix with the data
+        """
+        i = 0
+        for row in range(self.rows):
+            for col in range(self.columns):
+                matrix[row,col] = data[i]
+                i+=1
+        return matrix
 
     def get_matrix(self):
-        pass
+        """ Return the matrix filled out
+        """
+        return self._populate_matrix(self.matrix,self._random_matrix_values())
 
 
 m1 = Matrix()
