@@ -81,22 +81,22 @@ class Matrix:
         """
         if (self.columns == other.rows):
             new_matrix = self._create_empty_matrix(self.rows, other.columns)
-            matrix_one_row = 0  # mat row
-            matrix_one_column = 0  # mat col
-            matrix_two_row = 0  # mat2 row
-            matrix_two_column = 0  # mat2 col
+            m1_row = 0  # mat row
+            m1_column = 0  # mat col
+            m2_row = 0  # mat2 row
+            m2_column = 0  # mat2 col
             for row in range(self.rows):
                 for col in range(other.columns):
                     for _ in range(self.columns):
-                        new_matrix[row, col] += round(self.matrix[matrix_one_row, matrix_one_column]
-                                                      * other.matrix[matrix_two_row, matrix_two_column], 2,)
-                        matrix_one_column += 1
-                        matrix_two_row += 1
-                    matrix_two_column += 1
-                    matrix_one_column = 0
-                    matrix_two_row = 0
-                matrix_one_row += 1
-                matrix_two_column = 0
+                        new_matrix[row, col] += round(self.matrix[m1_row, m1_column]
+                                                      * other.matrix[m2_row, m2_column], 2,)
+                        m1_column += 1
+                        m2_row += 1
+                    m2_column += 1
+                    m1_column = 0
+                    m2_row = 0
+                m1_row += 1
+                m2_column = 0
             return new_matrix
         else:
             return "The number of columns in the first matrix\
