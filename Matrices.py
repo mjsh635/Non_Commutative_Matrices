@@ -1,5 +1,9 @@
+# required for the operation of this class
 import random
 import numpy as np
+# used in the printing
+import time
+import os
 
 
 class Matrix:
