@@ -13,8 +13,7 @@ class Matrix:
         self.columns = columns
         self.rows = rows
         self.matrix = self._create_empty_matrix(self.rows, self.columns)
-        self.matrix = self._populate_matrix(
-            self.matrix, self._random_matrix_values())
+        self._populate_matrix(self.matrix, self._random_matrix_values())
 
     def _create_empty_matrix(self, rows, columns):
         """ Create a matrix of the desired size that is populated
@@ -27,23 +26,22 @@ class Matrix:
         """
         data = []
         for _ in range(self.rows*self.columns):
-            data.append(round(random.random(), 2)+random.randint(0, 5))
+            data.append(round(random.random(), 2)+random.randint(0, 10))
         return data
 
     def _populate_matrix(self, matrix, data):
         """ Populate the matrix with the data
         """
-        i = 0
+        data_index = 0
         for row in range(self.rows):
             for col in range(self.columns):
-                matrix[row, col] = data[i]
-                i += 1
-        return matrix
+                matrix[row, col] = data[data_index]
+                data_index += 1
 
-    def get_matrix(self):
-        """ Return the matrix filled out
+    def print_matrix(self):
+        """ Returns the matrix
         """
-        return self.matrix
+        print(self.matrix)
 
     def __add__(self, other):
         """ Override the python method for the addition operator to perform
@@ -79,22 +77,22 @@ class Matrix:
         """
         if (self.columns == other.rows):
             new_matrix = self._create_empty_matrix(self.rows, other.columns)
-            m = 0  # mat row
-            n = 0  # mat col
-            p = 0  # mat2 row
-            q = 0  # mat2 col
+            matrix_one_row = 0  # mat row
+            matrix_one_column = 0  # mat col
+            matrix_two_row = 0  # mat2 row
+            matrix_two_column = 0  # mat2 col
             for row in range(self.rows):
                 for col in range(other.columns):
                     for _ in range(self.columns):
-                        new_matrix[row, col] += round(self.matrix[m, n]
-                                                      * other.matrix[p, q], 2,)
-                        n += 1
-                        p += 1
-                    q += 1
-                    n = 0
-                    p = 0
-                m += 1
-                q = 0
+                        new_matrix[row, col] += round(self.matrix[matrix_one_row, matrix_one_column]
+                                                      * other.matrix[matrix_two_row, matrix_two_column], 2,)
+                        matrix_one_column += 1
+                        matrix_two_row += 1
+                    matrix_two_column += 1
+                    matrix_one_column = 0
+                    matrix_two_row = 0
+                matrix_one_row += 1
+                matrix_two_column = 0
             return new_matrix
         else:
             return "The number of columns in the first matrix\
@@ -103,12 +101,9 @@ class Matrix:
 
 m1 = Matrix(2, 2)
 m2 = Matrix(2, 2)
-# m1 = m1.get_matrix()
-# m2 = m2.get_matrix()
-# print("Matrix 1\n", m1)
-# print("Matrix 2\n", m2)
-print("Matrix 1\n", m1.get_matrix())
-print("Matrix 2\n", m2.get_matrix())
-
+print("Matrix 1")
+m1.print_matrix()
+print("Matrix 2")
+m2.print_matrix()
 print("M1 * M2\n", m1 * m2)
 print("M2 * M1\n", m2 * m1)
