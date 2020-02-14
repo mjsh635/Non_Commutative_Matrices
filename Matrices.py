@@ -103,11 +103,75 @@ class Matrix:
             should match the rows in the second"
 
 
-m1 = Matrix(2, 2)
-m2 = Matrix(2, 2)
+# Clear the terminal before printing
+os.system('cls||clear')
+
+
+print("#################################################################")
+print("#################################################################")
+
+print("""\nWhen multiplying matrices, they are not commutative,
+this means that when you multiply two matrices together A, B in
+the order A * B you receive a matrix C. However when you multiply
+these same matrices in the order B * A, you dont receive C.
+
+The orders that the matrices are multiplied in matter! \n
+""",)
+
+time.sleep(5)
+
+print(""" Here is an example. Using 2 randomly populated matrices:
+""")
+
 print("Matrix 1")
+m1 = Matrix(3, 3)
 m1.print_matrix()
+
 print("Matrix 2")
+m2 = Matrix(3, 3)
 m2.print_matrix()
-print("M1 * M2\n", m1 * m2)
-print("M2 * M1\n", m2 * m1)
+
+time.sleep(5)
+
+print("""\n When multiplied in the order Matrix 1 * Matrix 2
+they produce a matrix with the values:""")
+
+print(m1*m2)
+
+time.sleep(5)
+
+print("""\n However when multiplied in the order Matrix 2 * Matrix 1
+they produce a totally different matrix with the values:""")
+
+print(m2*m1)
+
+time.sleep(5)
+
+print("""\n In this case 2 square matrices were used, if the same test
+is done with matrices of different sizes such as these:""")
+
+print("Matrix 3")
+m3 = Matrix(3, 1)
+m1.print_matrix()
+
+print("Matrix 4")
+m4 = Matrix(1, 4)
+m4.print_matrix()
+
+time.sleep(5)
+
+print("""\n When multiplied in the order Matrix 3 * Matrix 4
+they produce a matrix with the values:""")
+
+print(m3*m4)
+
+time.sleep(5)
+
+print("""\n However When multiplied in the order Matrix 4 * Matrix 3
+they cannot be multiplied as they don't meet the rules for matrix
+multiplication:\n""")
+
+print(m4*m3)
+
+print("\n#################################################################")
+print("#################################################################")
