@@ -99,8 +99,9 @@ class Matrix:
                 m2_column = 0
             return new_matrix
         else:
-            return "The number of columns in the first matrix\
-            should match the rows in the second"
+            return """!!The number of columns in the first matrix should match
+the rows in the second if they are to be multiplied together!!
+"""
 
 
 # Clear the terminal before printing
